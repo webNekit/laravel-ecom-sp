@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Client\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Открытие главной страницы
+Route::get('/', [HomeController::class, 'index'])->name('page.home');
