@@ -1,6 +1,6 @@
 @props(['data'])
 <div class="col-6 col-sm-4 col-lg-2">
-    <a href="category.html" class="cat-block">
+    <a href="{{ route('page.products', $data->id) }}" class="cat-block">
         <figure>
             <span>
                 <img src="{{ url('storage', $data->img) }}" alt="Изображение категории {{ $data->name }}">
