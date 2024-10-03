@@ -6,7 +6,7 @@
                 <span class="product-label label-circle label-sale">Скидка</span>
             @endif
 
-            <a href="product.html">
+            <a href="{{ route('page.single-product', $data->id) }}">
                 <img src="{{ url('storage', $data->img) }}" alt="Product image" class="product-image" />
             </a>
 
@@ -24,7 +24,7 @@
                 <a href="{{ route('page.products', $data->category_id) }}">{{ $data->category->name }}</a>
             </div>
             <!-- End .product-cat -->
-            <h3 class="product-title"><a href="product.html">{{ $data->name }}</a></h3>
+            <h3 class="product-title"><a href="{{ route('page.single-product', $data->id) }}">{{ $data->name }}</a></h3>
             <!-- End .product-title -->
             <div class="product-price">
                 @if ($data->sale > 0)
