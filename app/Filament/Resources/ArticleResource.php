@@ -6,11 +6,14 @@ use App\Filament\Resources\ArticleResource\Pages;
 use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
@@ -69,6 +72,37 @@ class ArticleResource extends Resource
                         ]),
                     ]),
                 ])->columnSpanFull(),
+                Section::make('Контент')->schema([
+                    RichEditor::make('content')
+                        ->toolbarButtons([
+                            'attachFiles',
+                            'blockquote',
+                            'bold',
+                            'bulletList',
+                            'codeBlock',
+                            'h2',
+                            'h3',
+                            'italic',
+                            'link',
+                            'orderedList',
+                            'redo',
+                            'strike',
+                            'underline',
+                            'undo',
+                        ])
+                        ->label('Контент статьи')
+                        ->required(),
+                ])->columnSpanFull(),
+                Section::make('Медиа')->schema([
+                    FileUpload::make('image')
+                        ->label('Изображение статьи')
+                        ->image()
+                        ->directory('/articles'),
+                ])->columnSpanFull(),
+                Toggle::make('is_active')
+                    ->label('Активная запись'),
+                Toggle::make('is_popular')
+                    ->label('Популярная запись'), 
             ]);
     }
 
