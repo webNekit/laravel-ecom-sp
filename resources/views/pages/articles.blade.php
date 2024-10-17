@@ -5,5 +5,6 @@
 
 @section('content')
     Наши статьи
+    <livewire:sort />
     <livewire:articles.articles-list />
 @endsection
